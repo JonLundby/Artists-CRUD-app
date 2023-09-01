@@ -1,14 +1,16 @@
+/* ---------- Root  ---------- */
 :root {
   --header-font-family: "Moirai One", cursive; 
-  --body-color: rgb(49, 210, 197);
+  --body-color: dimgray;
   --secondary-main-color: rgba(115, 144, 188, 0.501);
   --btn-bg-color: rgba(83, 72, 94, 0.781);
   --btn-bg-color-hover: rgba(78, 98, 54, 0.781);
   --dialog-bg-color: rgb(99, 124, 149);
 }
 
+/* ---------- main ---------- */
 body {
-    background-color: dimgray;
+    background-color: var(--body-color);
 }
 
 header {
@@ -20,4 +22,55 @@ header {
   margin-bottom: 20px;
   box-shadow: 2px 3px 12px black;
   border-radius: 12px;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  background-color: var(--secondary-main-color);
+  /* height: 100px; */
+  margin: 20px;
+  margin-bottom: 20px;
+  box-shadow: 2px 3px 12px black;
+  border-radius: 12px;
+}
+
+/* ---------- Artists ELEMENTS ---------- */
+#spotter-posts-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  margin: 30px;
+  gap: 12px;
+  text-align: center;
+}
+
+#spotter-posts-container > article {
+  background-color: var(--secondary-main-color);
+  box-shadow: 1px 2px 5px black;
+  border-radius: 20px;
+  opacity: 0.9;
+}
+
+#spotter-posts-container > article:hover {
+  box-shadow: 2px 2px 12px black;
+  opacity: 1;
+  animation-name: mushroomArticle;
+  animation-duration: 200ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes mushroomArticle {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.015);
+  }
+}
+
+#grid-img {
+  object-fit: scale-down;
+  width: 20vw;
+  height: 30vh;
 }
