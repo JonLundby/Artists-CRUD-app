@@ -2,7 +2,6 @@
 
 //Imports...
 
-
 // const endpoint = "http://localhost:3000";
 const endpoint = "../backend/artists.json";
 
@@ -29,33 +28,45 @@ async function getArtists() {
 
 function showArtists(artists) {
   document.querySelector("#artists-container").innerHTML = "";
-
   for (const artist of artists) {
-    const htmlPost = /*html*/ `
+    generateArtist(artist);
+  }
+}
+
+function generateArtist(object) {
+  const htmlPost = /*html*/ `
                           <article id="artist-grid-post">
-                              <h2>${artist.artistName}<h2>
-                              <h3>${artist.name}</h3>
-                              <img src=${artist.image} id="grid-img">
-                              <p>Born: ${artist.birthdate}</p>
+                              <h2>${object.artistName}<h2>
+                              <h3>${object.name}</h3>
+                              <img src=${object.image} id="grid-img">
+                              <p>Born: ${object.birthdate}</p>
                               <button class="btn-update">Update</button>
                               <button class="btn-delete">Delete</button>
                           </article>
       `;
-  
-    document.querySelector("#artists-container").insertAdjacentHTML("beforeend", htmlPost);
-  
-    // ---------- Eventlisteners on child elements---------- \\
-    //todo
-    // document.querySelector("#artists-container article:last-child").addEventListener("click", showDetails);
-  
-    // document.querySelector("#artists-container article:last-child .btn-update").addEventListener("click", (event) => {
-    //   event.stopPropagation();
-    //   updatePostClicked();
-    // });
-    // document.querySelector("#artists-container article:last-child .btn-delete").addEventListener("click", (event) => {
-    //   event.stopPropagation();
-    //   deletePostClicked();
-    // });
-  }
 
+  document.querySelector("#artists-container").insertAdjacentHTML("beforeend", htmlPost);
+
+  // ---------- Eventlisteners on child elements---------- \\
+  //todo
+  document.querySelector("#artists-container article:last-child").addEventListener("click", showDetails);
+
+  // document.querySelector("#artists-container article:last-child .btn-update").addEventListener("click", (event) => {
+  //   event.stopPropagation();
+  //   updatePostClicked();
+  // });
+  // document.querySelector("#artists-container article:last-child .btn-delete").addEventListener("click", (event) => {
+  //   event.stopPropagation();
+  //   deletePostClicked();
+  // });
+
+  function showDetails() {
+    document.querySelector("#detail-view-artistname").textContent = object.artistName;
+    document.querySelector("#detail-view-name").textContent = object.name;
+    document.querySelector("#detail-view-birthdate").textContent = object.birthdate;
+    document.querySelector("#detail-view-description").textContent = object.shortDescription;
+    // todo - add more info? And make some css
+
+    document.querySelector("#dialog-detail-view").showModal();
+  }
 }
