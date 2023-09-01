@@ -1,0 +1,35 @@
+[
+    {
+        "id": 0,
+        "name": "name",
+        "birthdate": "birthdate",
+        "activeSince": "activeSince",
+        "genres": "genres",
+        "labels": "labels",
+        "website": "website",
+        "image": "image",
+        "shortDescription": "shortDescription"
+    },
+    {
+      "id": 1,
+      "name": "name",
+      "birthdate": "birthdate",
+      "activeSince": "activeSince",
+      "genres": "genres",
+      "labels": "labels",
+      "website": "website",
+      "image": "image",
+      "shortDescription": "shortDescription"
+    },
+    {
+      "id": 2,
+      "name": "name",
+      "birthdate": "birthdate",
+      "activeSince": "activeSince",
+      "genres": "genres",
+      "labels": "labels",
+      "website": "website",
+      "image": "image",
+      "shortDescription": "shortDescription"
+    }
+]

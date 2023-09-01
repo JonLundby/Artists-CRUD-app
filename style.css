@@ -1,0 +1,23 @@
+:root {
+  --header-font-family: "Moirai One", cursive; 
+  --body-color: rgb(49, 210, 197);
+  --secondary-main-color: rgba(115, 144, 188, 0.501);
+  --btn-bg-color: rgba(83, 72, 94, 0.781);
+  --btn-bg-color-hover: rgba(78, 98, 54, 0.781);
+  --dialog-bg-color: rgb(99, 124, 149);
+}
+
+body {
+    background-color: dimgray;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  background-color: var(--secondary-main-color);
+  height: 100px;
+  margin: 20px;
+  margin-bottom: 20px;
+  box-shadow: 2px 3px 12px black;
+  border-radius: 12px;
+}
