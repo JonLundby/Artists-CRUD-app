@@ -36,6 +36,16 @@ header {
   height: 50px;
 }
 
+button {
+  background-color: var(--btn-bg-color);
+  color: rgb(212, 231, 208);
+  height: 35px;
+  width: 90px;
+  margin: 10px;
+  font-size: 1.05rem;
+  border-radius: 10px;
+}
+
 footer {
   display: flex;
   justify-content: center;
