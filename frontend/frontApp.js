@@ -51,14 +51,14 @@ function generateArtist(object) {
   //todo
   document.querySelector("#artists-container article:last-child").addEventListener("click", showDetails);
 
-  // document.querySelector("#artists-container article:last-child .btn-update").addEventListener("click", (event) => {
-  //   event.stopPropagation();
-  //   updatePostClicked();
-  // });
-  // document.querySelector("#artists-container article:last-child .btn-delete").addEventListener("click", (event) => {
-  //   event.stopPropagation();
-  //   deletePostClicked();
-  // });
+  document.querySelector("#artists-container article:last-child .btn-update").addEventListener("click", (event) => {
+    event.stopPropagation();
+    updatePostClicked();
+  });
+  document.querySelector("#artists-container article:last-child .btn-delete").addEventListener("click", (event) => {
+    event.stopPropagation();
+    deletePostClicked();
+  });
 
   function showDetails() {
     document.querySelector("#detail-view-artistname").textContent = object.artistName;
@@ -69,4 +69,12 @@ function generateArtist(object) {
 
     document.querySelector("#dialog-detail-view").showModal();
   }
+}
+
+function updatePostClicked() {
+  //todo 
+}
+
+function deletePostClicked() {
+  //todo
 }
