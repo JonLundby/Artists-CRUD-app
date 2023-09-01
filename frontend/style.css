@@ -36,7 +36,7 @@ footer {
 }
 
 /* ---------- Artists ELEMENTS ---------- */
-#spotter-posts-container {
+#artists-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
   margin: 30px;
@@ -44,14 +44,14 @@ footer {
   text-align: center;
 }
 
-#spotter-posts-container > article {
+#artists-container > article {
   background-color: var(--secondary-main-color);
   box-shadow: 1px 2px 5px black;
   border-radius: 20px;
   opacity: 0.9;
 }
 
-#spotter-posts-container > article:hover {
+#artists-container > article:hover {
   box-shadow: 2px 2px 12px black;
   opacity: 1;
   animation-name: mushroomArticle;
