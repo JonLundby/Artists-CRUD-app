@@ -10,6 +10,9 @@ window.addEventListener("load", startApp());
 function startApp() {
   console.log("test!");
   updateArtistGrid();
+
+  //eventlisteners
+  document.querySelector("#create-artist-btn").addEventListener("click", showCreateArtist);
 }
 
 async function updateArtistGrid() {
@@ -77,4 +80,10 @@ function updatePostClicked() {
 
 function deletePostClicked() {
   //todo
+}
+
+function showCreateArtist(event) {
+  event.preventDefault();
+  console.log("create clicked!")
+  document.querySelector("#dialog-create-artist").showModal();
 }

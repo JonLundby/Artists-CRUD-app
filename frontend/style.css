@@ -47,7 +47,7 @@ footer {
   border-radius: 12px;
 }
 
-/* ---------- Artists ELEMENTS ---------- */
+/* ---------- Artists grid ---------- */
 #artists-container {
   display: grid;
   grid-template-columns: auto auto auto auto;
@@ -66,13 +66,13 @@ footer {
 #artists-container > article:hover {
   box-shadow: 2px 2px 12px black;
   opacity: 1;
-  animation-name: mushroomArticle;
+  animation-name: artistArticle;
   animation-duration: 200ms;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
 }
 
-@keyframes mushroomArticle {
+@keyframes artistArticle {
   0% {
     transform: scale(1);
   }
@@ -85,4 +85,17 @@ footer {
   object-fit: scale-down;
   width: 20vw;
   height: 30vh;
+}
+
+/* ---------- detail view/dialog ---------- */
+#dialog-create-artist {
+  background-color: var(--dialog-bg-color);
+  width: 540px;
+  height: 620px;
+}
+
+#form-create-artist {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: center;
 }

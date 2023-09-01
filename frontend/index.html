@@ -28,7 +28,7 @@
             </fieldset>
         </section>
         <section id="artists-container">
-            <!-- grid for artists -->
+            <!-- grid for artists inserts here -->
         </section>
 
         <footer>
@@ -45,8 +45,36 @@
     </dialog>
     
     <dialog id="dialog-create-artist">
-        <form action="" method="dialog" id="dialog-create-artist">
+        <form action="" method="dialog" id="form-create-artist">
             <!-- form create -->
+            <h1>Create new artist</h1>
+            <!-- artist name -->
+            <label for="artist-name-create">Artist name:</label>
+            <input type="text" name="artist-name-create" id="artist-name-create">
+            <!-- civil name -->
+            <label for="civil-name-create">Civil name:</label>
+            <input type="text" name="civil-name-create" id="civil-name-create">
+            <!-- birthdate -->
+            <label for="birthdate-create">Birthdate:</label>
+            <input type="date" name="birthdate-create" id="birthdate-create" min="1900-01-01" />
+            <!-- active since -->
+            <label for="active-since-create">Active since:</label>
+            <input type="number" name="active-since-create" id="active-since-create" min="1900" max="2023">
+            <!-- genres -->
+            <label for="genres-create">Genres:</label>
+            <input type="text" name="genres-create" id="genres-create">
+            <!-- labels -->
+            <label for="labels-create">Labels:</label>
+            <input type="text" name="labels-create" id="labels-create">
+            <!-- website -->
+            <label for="website-create">Website:</label>
+            <input type="text" name="website-create" id="website-create">
+            <!-- image -->
+            <label for="image-create">Image(Url):</label>
+            <input type="text" name="image-create" id="image-create">
+            <!-- short description -->
+            <label for="short-description-create">Short description:</label>
+            <input type="text" name="short-description-create" id="short-description-create">
         </form>
     </dialog>
 
