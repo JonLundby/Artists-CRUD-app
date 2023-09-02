@@ -1,96 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="#" type="image/x-icon">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="#" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css" />
     <title>Artists app</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>MUSIC ARTISTS</h1>
+      <h1>MUSIC ARTISTS</h1>
     </header>
 
     <main>
-        <section id="option-btns-container">
-            <!-- user functionalities (FILTER-genres-decades and SORT-name-birthdate-activeSince) -->
-            <div id="create-artist-btn-container">
-                <button id="create-artist-btn">NEW ARTIST</button>
-            </div>
-            <fieldset>
-                <legend>Filter & sort</legend>
-                <div id="filters-container">
-                    <label for=""></label>
-                    <input type="checkbox">
-                </div>
+      <section id="option-btns-container">
+        <!-- user functionalities (FILTER-genres-decades and SORT-name-birthdate-activeSince) -->
+        <div id="create-artist-btn-container">
+          <button id="create-artist-btn">NEW ARTIST</button>
+        </div>
+        <fieldset>
+          <legend>Filter & sort</legend>
+          <div id="filters-container">
+            <label for=""></label>
+            <input type="checkbox" />
+          </div>
+        </fieldset>
+      </section>
+      <section id="artists-container">
+        <!-- grid for artists inserts here -->
+      </section>
 
-            </fieldset>
-        </section>
-        <section id="artists-container">
-            <!-- grid for artists inserts here -->
-        </section>
-
-        <footer>
-            <h4>A DAT.JS project</h4>
-        </footer>
+      <footer>
+        <h4>A DAT.JS project</h4>
+      </footer>
     </main>
 
     <dialog id="dialog-detail-view">
-        <h2 id="detail-view-artistname"></h2>
-        <h4 id="detail-view-name"></h4>
-        <h6 id="detail-view-birthdate"></h6>
-        <p id="detail-view-description"></p>
-        <!-- todo - more info? -->
-    </dialog>
-    
-    <dialog id="dialog-create-artist">
-        <form action="" method="dialog" id="form-create-artist">
-            <!-- form create -->
-            <h1>Create new artist</h1>
-            <!-- artist name -->
-            <label for="artist-name-create">Artist name:</label>
-            <input type="text" name="artist-name-create" id="artist-name-create">
-            <!-- civil name -->
-            <label for="civil-name-create">Civil name:</label>
-            <input type="text" name="civil-name-create" id="civil-name-create">
-            <!-- birthdate -->
-            <label for="birthdate-create">Birthdate:</label>
-            <input type="date" name="birthdate-create" id="birthdate-create" min="1900-01-01" />
-            <!-- active since -->
-            <label for="active-since-create">Active since:</label>
-            <input type="number" name="active-since-create" id="active-since-create" min="1900" max="2023">
-            <!-- genres -->
-            <label for="genres-create">Genres:</label>
-            <input type="text" name="genres-create" id="genres-create">
-            <!-- labels -->
-            <label for="labels-create">Labels:</label>
-            <input type="text" name="labels-create" id="labels-create">
-            <!-- website -->
-            <label for="website-create">Website:</label>
-            <input type="text" name="website-create" id="website-create">
-            <!-- image -->
-            <label for="image-create">Image(Url):</label>
-            <input type="text" name="image-create" id="image-create">
-            <!-- short description -->
-            <label for="short-description-create">Short description:</label>
-            <input type="text" name="short-description-create" id="short-description-create">
-        </form>
+      <h2 id="detail-view-artistname"></h2>
+      <h4 id="detail-view-name"></h4>
+      <h6 id="detail-view-birthdate"></h6>
+      <p id="detail-view-description"></p>
+      <!-- todo - more info? -->
     </dialog>
 
-    
+    <dialog id="dialog-create-artist">
+      <form action="" method="dialog" id="form-create-artist">
+        <!-- form create -->
+        <h1>Create new artist</h1>
+        <!-- artist name -->
+        <label for="artist-name-create">Artist name:</label>
+        <input type="text" name="artistName" id="artist-name-create" />
+        <!-- civil name -->
+        <label for="name-create">Civil name:</label>
+        <input type="text" name="name" id="name-create" />
+        <!-- birthdate -->
+        <label for="birthdate-create">Birthdate:</label>
+        <input type="date" name="birthdate" id="birthdate-create" min="1900-01-01" />
+        <!-- active since -->
+        <label for="active-since-create">Active since:</label>
+        <input type="number" name="activeSince" id="active-since-create" min="1900" max="2023" />
+        <!-- genres -->
+        <label for="genres-create">Genres:</label>
+        <input type="text" name="genres" id="genres-create" placeholder="ex. (Rock, Hip hop, Trance)"/>
+        <!-- labels -->
+        <label for="labels-create">Labels:</label>
+        <input type="text" name="labels" id="labels-create" placeholder="ex. (Sony, Polydor, EMI)"/>
+        <!-- website -->
+        <label for="website-create">Website:</label>
+        <input type="text" name="website" id="website-create" />
+        <!-- image -->
+        <label for="image-create">Image(Url):</label>
+        <input type="text" name="image" id="image-create" />
+        <!-- short description -->
+        <label for="short-description-create">Short description:</label>
+        <input type="text" name="shortDescription" id="short-description-create" />
+
+        <!-- create btn -->
+        <button type="submit">Create</button>
+      </form>
+    </dialog>
+
     <dialog id="dialog-update-artist">
-        <form action="" method="dialog" id="dialog-update-artist">
-            <!-- form update -->
-        </form>
+      <form action="" method="dialog" id="dialog-update-artist">
+        <!-- form update -->
+      </form>
     </dialog>
 
     <dialog id="dialog-delete-artist">
-        <form action="" method="dialog" id="dialog-delete-artist">
-            <!-- form delete confirmation -->
-        </form>
+      <form action="" method="dialog" id="dialog-delete-artist">
+        <!-- form delete confirmation -->
+      </form>
     </dialog>
 
     <script src="frontApp.js"></script>
-</body>
+  </body>
 </html>

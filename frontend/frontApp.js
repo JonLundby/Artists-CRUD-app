@@ -2,8 +2,8 @@
 
 //Imports...
 
-// const endpoint = "http://localhost:3000";
-const endpoint = "../backend/artists.json";
+const endpoint = "http://localhost:3000";
+// const endpoint = "../backend/data/artists.json";
 
 window.addEventListener("load", startApp());
 
@@ -13,6 +13,7 @@ function startApp() {
 
   //eventlisteners
   document.querySelector("#create-artist-btn").addEventListener("click", showCreateArtist);
+  document.querySelector("#form-create-artist").addEventListener("submit", createArtist);
 }
 
 async function updateArtistGrid() {
@@ -23,7 +24,7 @@ async function updateArtistGrid() {
 
 //get artist (module rest)
 async function getArtists() {
-  const response = await fetch(`${endpoint}`);
+  const response = await fetch(`${endpoint}/artists`);
   const data = await response.json();
 
   return data;
@@ -75,7 +76,7 @@ function generateArtist(object) {
 }
 
 function updatePostClicked() {
-  //todo 
+  //todo
 }
 
 function deletePostClicked() {
@@ -84,6 +85,56 @@ function deletePostClicked() {
 
 function showCreateArtist(event) {
   event.preventDefault();
-  console.log("create clicked!")
+  console.log("create clicked!");
   document.querySelector("#dialog-create-artist").showModal();
+}
+
+async function createArtist(event) {
+  event.preventDefault();
+  const form = event.target;
+
+  const artistName = form.artistName.value;
+  const name = form.name.value;
+  const birthdate = form.birthdate.value;
+  const activeSince = form.activeSince.value;
+  const genres = genresArr();
+
+  function genresArr() {
+    let arr = [];
+    const str = form.genres.value;
+
+    arr = str.split(", ");
+
+    return arr;
+  }
+
+  const labels = labelsArr();
+
+  function labelsArr() {
+    let arr = [];
+    const str = form.labels.value;
+
+    arr = str.split(", ");
+
+    return arr;
+  }
+
+  const website = form.website.value;
+  const image = form.image.value;
+  const shortDescription = form.shortDescription.value;
+  
+  // create a new user
+  const newArtist = { artistName, name, birthdate, activeSince, genres, labels, website, image, shortDescription };
+  const artistAsJson = JSON.stringify(newArtist);
+  const response = await fetch(`${endpoint}/artists`, {
+    method: "POST",
+    body: artistAsJson,
+    headers: { "Content-Type": "application/json" },
+  });
+  
+  if (response.ok) {
+    // if success, update the users grid
+    console.log("artist submitted");
+    updateArtistGrid();
+  }
 }
