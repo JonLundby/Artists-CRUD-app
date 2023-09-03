@@ -61,10 +61,10 @@
         <input type="number" name="activeSince" id="active-since-create" min="1900" max="2023" />
         <!-- genres -->
         <label for="genres-create">Genres:</label>
-        <input type="text" name="genres" id="genres-create" placeholder="ex. (Rock, Hip hop, Trance)"/>
+        <input type="text" name="genres" id="genres-create" placeholder="ex. (Rock, Hip hop, Trance)" />
         <!-- labels -->
         <label for="labels-create">Labels:</label>
-        <input type="text" name="labels" id="labels-create" placeholder="ex. (Sony, Polydor, EMI)"/>
+        <input type="text" name="labels" id="labels-create" placeholder="ex. (Sony, Polydor, EMI)" />
         <!-- website -->
         <label for="website-create">Website:</label>
         <input type="text" name="website" id="website-create" />
@@ -81,8 +81,39 @@
     </dialog>
 
     <dialog id="dialog-update-artist">
-      <form action="" method="dialog" id="dialog-update-artist">
+      <form action="" method="dialog" id="form-update-artist">
         <!-- form update -->
+        <h1>Update artist</h1>
+        <!-- artist name -->
+        <label for="artist-name-update">Artist name:</label>
+        <input type="text" name="artistName" id="artist-name-update" />
+        <!-- civil name -->
+        <label for="name-update">Civil name:</label>
+        <input type="text" name="name" id="name-update" />
+        <!-- birthdate -->
+        <label for="birthdate-update">Birthdate:</label>
+        <input type="date" name="birthdate" id="birthdate-update" min="1900-01-01" />
+        <!-- active since -->
+        <label for="active-since-update">Active since:</label>
+        <input type="number" name="activeSince" id="active-since-update" min="1900" max="2023" />
+        <!-- genres -->
+        <label for="genres-update">Genres:</label>
+        <input type="text" name="genres" id="genres-update" />
+        <!-- labels -->
+        <label for="labels-update">Labels:</label>
+        <input type="text" name="labels" id="labels-update" />
+        <!-- website -->
+        <label for="website-update">Website:</label>
+        <input type="text" name="website" id="website-update" />
+        <!-- image -->
+        <label for="image-update">Image(Url):</label>
+        <input type="text" name="image" id="image-update" />
+        <!-- short description -->
+        <label for="short-description-update">Short description:</label>
+        <input type="text" name="shortDescription" id="short-description-update" />
+
+        <!-- create btn -->
+        <button type="submit">Update</button>
       </form>
     </dialog>
 

@@ -97,14 +97,14 @@ footer {
   height: 30vh;
 }
 
-/* ---------- detail view/dialog ---------- */
-#dialog-create-artist {
+/* ---------- dialog windows ---------- */
+#dialog-create-artist, #dialog-update-artist {
   background-color: var(--dialog-bg-color);
   width: 540px;
   height: 620px;
 }
 
-#form-create-artist {
+#form-create-artist, #form-update-artist {
   display: grid;
   grid-template-columns: auto;
   justify-content: center;
