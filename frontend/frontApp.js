@@ -25,6 +25,9 @@ function startApp() {
 
   //sort
   document.querySelector("#sort-by").addEventListener("change", sortBy);
+  
+  //filter
+  document.querySelector("#filter-genre").addEventListener("change", filterGenre);
 }
 
 async function updateArtistGrid() {
@@ -254,10 +257,14 @@ function sortBy(event) {
     artists.sort((artist1, artist2) => artist1.artistName.localeCompare(artist2.artistName));
     showArtists(artists);
   } else if (value === "civil-name") {
-    console.log("sorting by civil name")
+    console.log("sorting by civil name");
     artists.sort((artist1, artist2) => artist1.name.localeCompare(artist2.name));
     showArtists(artists);
-  } else if (value === "birthdate") {
-    console.log("sorting by birthdate");
-  }
+  } else if (value === "birthdate-ascending") {
+    artists.sort((artist1, artist2) => new Date(artist1.birthdate).getTime() - new Date(artist2.birthdate).getTime());
+    showArtists(artists);
+  } else if (value === "birthdate-descending") {
+    artists.sort((artist1, artist2) => new Date(artist1.birthdate).getTime() - new Date(artist2.birthdate).getTime()).reverse();
+    showArtists(artists);
+    }
 }
