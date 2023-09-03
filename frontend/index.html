@@ -18,13 +18,38 @@
         <div id="create-artist-btn-container">
           <button id="create-artist-btn">NEW ARTIST</button>
         </div>
-        <fieldset>
-          <legend>Filter & sort</legend>
-          <div id="filters-container">
-            <label for=""></label>
-            <input type="checkbox" />
-          </div>
-        </fieldset>
+
+        <div id="options-item">
+          <label for="sort"
+            >Sort by:
+            <select name="sort" id="sort-by">
+              <option value="none">None</option>
+              <option value="artist-name">Artist name(alias)</option>
+              <option value="civil-name">Artist name(civil)</option>
+              <option value="birthdate">Birthdate</option>
+            </select>
+          </label>
+          <label for="filter-genre"
+            >Filter genre:
+            <select name="filterGenre" id="filter-genre">
+              <option value="none">None</option>
+              <option value="jazz">Jazz</option>
+              <option value="hip-hop-rap">Hip hop/rap</option>
+              <option value="folk">Folk</option>
+              <option value="bossa-nova">Bossa Nova</option>
+            </select>
+          </label>
+          <label for="filter-label"
+            >Filter label:
+            <select name="filterLabel" id="filter-label">
+              <option value="none">None</option>
+              <option value="emi">EMI</option>
+              <option value="sony">sony</option>
+              <option value="verve-records">Verve records</option>
+              <option value="Polygram-records">Polygram records</option>
+            </select>
+          </label>
+        </div>
       </section>
       <section id="artists-container">
         <!-- grid for artists inserts here -->

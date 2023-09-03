@@ -4,6 +4,7 @@
 
 // const endpoint = "../backend/data/artists.json";
 const endpoint = "http://localhost:3000";
+let artists;
 let selectedArtist;
 
 window.addEventListener("load", startApp());
@@ -13,15 +14,21 @@ function startApp() {
   updateArtistGrid();
 
   //eventlisteners
+  //detail view
   document.querySelector("#create-artist-btn").addEventListener("click", showCreateArtist);
+
+  //create
   document.querySelector("#form-create-artist").addEventListener("submit", createArtist);
 
+  //update
   document.querySelector("#form-update-artist").addEventListener("submit", updateArtist);
 
+  //sort
+  document.querySelector("#sort-by").addEventListener("change", sortBy);
 }
 
 async function updateArtistGrid() {
-  const artists = await getArtists();
+  artists = await getArtists();
   console.log(artists);
   showArtists(artists);
 }
@@ -231,5 +238,26 @@ async function deleteArtist(id) {
   if (response.ok) {
     // if success, update the artists grid
     updateArtistGrid();
+  }
+}
+
+// ----- SORT ARTISTS ----- \\
+function sortBy(event) {
+  const value = event.target.value;
+  console.log(`sorting was changed to ${value}`);
+
+  if (value === "none") {
+    console.log("sorting by artist none");
+    updateArtistGrid();
+  } else if (value === "artist-name") {
+    console.log("sorting by artist name");
+    artists.sort((artist1, artist2) => artist1.artistName.localeCompare(artist2.artistName));
+    showArtists(artists);
+  } else if (value === "civil-name") {
+    console.log("sorting by civil name")
+    artists.sort((artist1, artist2) => artist1.name.localeCompare(artist2.name));
+    showArtists(artists);
+  } else if (value === "birthdate") {
+    console.log("sorting by birthdate");
   }
 }

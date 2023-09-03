@@ -57,6 +57,15 @@ footer {
   border-radius: 12px;
 }
 
+/* ---------- User options ---------- */
+#options-item {
+  display: flex;
+  justify-content: center;
+  margin: 8px;
+  gap: 55px;
+}
+
+
 /* ---------- Artists grid ---------- */
 #artists-container {
   display: grid;
