@@ -5,6 +5,8 @@
 // const endpoint = "../backend/data/artists.json";
 const endpoint = "http://localhost:3000";
 let artists;
+let favoriteArtists;
+let artistsFiltered;
 let selectedArtist;
 
 window.addEventListener("load", startApp());
@@ -27,11 +29,14 @@ function startApp() {
   document.querySelector("#sort-by").addEventListener("change", sortBy);
   
   //filter
-  document.querySelector("#filter-genre").addEventListener("change", filterGenre);
+  document.querySelector("#filter-genre").addEventListener("change", filterArtists);
+  document.querySelector("#filter-label").addEventListener("change", filterArtists);
+  document.querySelector("#fav-only").addEventListener("change", filterFavOnly);
 }
 
 async function updateArtistGrid() {
   artists = await getArtists();
+  favoriteArtists = await getFavArtists();
   console.log(artists);
   showArtists(artists);
 }
@@ -39,6 +44,14 @@ async function updateArtistGrid() {
 //get artist (module rest)
 async function getArtists() {
   const response = await fetch(`${endpoint}/artists`);
+  const data = await response.json();
+
+  return data;
+}
+
+//get FAV artist (module rest)
+async function getFavArtists() {
+  const response = await fetch(`${endpoint}/favorites`);
   const data = await response.json();
 
   return data;
@@ -60,6 +73,7 @@ function generateArtist(object) {
                               <p>Born: ${object.birthdate}</p>
                               <button class="btn-update">Update</button>
                               <button class="btn-delete">Delete</button>
+                              <button class="btn-favorite">Fav</button>
                           </article>
       `;
 
@@ -76,6 +90,10 @@ function generateArtist(object) {
   document.querySelector("#artists-container article:last-child .btn-delete").addEventListener("click", (event) => {
     event.stopPropagation();
     deleteArtist(object.id);
+  });
+  document.querySelector("#artists-container article:last-child .btn-favorite").addEventListener("click", (event) => {
+    event.stopPropagation();
+    createFavoriteArtist(object, object.id);
   });
 
   function showDetails() {
@@ -132,6 +150,7 @@ function showCreateArtist(event) {
   document.querySelector("#dialog-create-artist").showModal();
 }
 
+// ----- CREATE ARTIST ----- \\
 async function createArtist(event) {
   event.preventDefault();
   const form = event.target;
@@ -166,7 +185,6 @@ async function createArtist(event) {
   const image = form.image.value;
   const shortDescription = form.shortDescription.value;
 
-  // ----- CREATE ARTIST ----- \\
   const newArtist = { artistName, name, birthdate, activeSince, genres, labels, website, image, shortDescription };
   const artistAsJson = JSON.stringify(newArtist);
   const response = await fetch(`${endpoint}/artists`, {
@@ -244,27 +262,93 @@ async function deleteArtist(id) {
   }
 }
 
+// ----- FAVORITE ARTIST ----- \\
+async function createFavoriteArtist(artist, id) {
+
+  console.log(favoriteArtists)
+  console.log(id)
+  
+  let test = favoriteArtists.find((artist) => artist.id === id)
+  console.log(test);
+
+  if (typeof(test) === "undefined") {
+    console.log("no similarities");
+    const favArtistAsJson = JSON.stringify(artist)
+    await fetch(`${endpoint}/favorites`, {
+      method: "POST",
+      body: favArtistAsJson,
+      headers: { "Content-Type": "application/json" },
+    });
+  } else {
+    console.log("already exits");
+    await fetch(`${endpoint}/favorites/${id}`, {
+      method: "DELETE",
+    });
+  }
+  
+  // if (!isFav) {
+    // const favArtistAsJson = JSON.stringify(artist)
+    // await fetch(`${endpoint}/favorites`, {
+    //   method: "POST",
+    //   body: favArtistAsJson,
+    //   headers: { "Content-Type": "application/json" },
+    // });
+  // } else if (isFav) {
+    // await fetch(`${endpoint}/favorites/${id}`, {
+    //   method: "DELETE",
+    // });
+  // }
+}
+
+// ----- SORT ARTISTS ----- \\
+function filterFavOnly() {
+  const favCheck = document.querySelector("#fav-only");
+  if (favCheck.checked) {
+    showArtists(favoriteArtists);
+  } else {
+    showArtists(artists);
+  }
+}
+
 // ----- SORT ARTISTS ----- \\
 function sortBy(event) {
   const value = event.target.value;
-  console.log(`sorting was changed to ${value}`);
+  // console.log(`sorting was changed to ${value}`);
+  const favCheck = document.querySelector("#fav-only");
 
-  if (value === "none") {
+  if (value === "none" && !favCheck.checked) {
     console.log("sorting by artist none");
     updateArtistGrid();
-  } else if (value === "artist-name") {
-    console.log("sorting by artist name");
+  } else if (value === "artist-name" && !favCheck.checked) {
+    // console.log("sorting by artist name");
     artists.sort((artist1, artist2) => artist1.artistName.localeCompare(artist2.artistName));
     showArtists(artists);
-  } else if (value === "civil-name") {
-    console.log("sorting by civil name");
+  } else if (value === "civil-name" && !favCheck.checked) {
+    // console.log("sorting by civil name");
     artists.sort((artist1, artist2) => artist1.name.localeCompare(artist2.name));
     showArtists(artists);
-  } else if (value === "birthdate-ascending") {
+  } else if (value === "birthdate-ascending" && !favCheck.checked) {
     artists.sort((artist1, artist2) => new Date(artist1.birthdate).getTime() - new Date(artist2.birthdate).getTime());
     showArtists(artists);
-  } else if (value === "birthdate-descending") {
+  } else if (value === "birthdate-descending" && !favCheck.checked) {
     artists.sort((artist1, artist2) => new Date(artist1.birthdate).getTime() - new Date(artist2.birthdate).getTime()).reverse();
     showArtists(artists);
-    }
+  }
+}
+
+// ----- FILTER ARTISTS ----- \\ ------> todo / NOT WORKING
+function filterArtists() {
+  let valueGenre = document.querySelector("#filter-genre").value;
+  let valueLabel = document.querySelector("#filter-label").value;
+  console.log(valueGenre)
+  
+  artistsFiltered = artists.filter(checkFilters);
+
+  function checkFilters(artist) {
+    return artist.genres.includes(valueGenre);
+  }
+
+  console.log(artistsFiltered);
+  // showArtists(artistsFiltered);
+
 }

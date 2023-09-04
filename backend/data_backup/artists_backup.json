@@ -46,5 +46,29 @@
     "website": "https://www.roedelius.com/",
     "image": "https://upload.wikimedia.org/wikipedia/commons/9/94/Hans_Joachim_Roedelius_2015.jpg",
     "shortDescription": "Hans-Joachim Roedelius is a German electronic musician and composer, best known as a co-founder of the influential 'kosmische' groups Cluster and Harmonia. He also performed in the ambient jazz trio Aquarello, and released several solo studio albums."
+  },
+  {
+    "id": 4,
+    "artistName": "Piero Umiliani",
+    "name": "Piero Umiliani",
+    "birthdate": "1926-07-17",
+    "activeSince": 1960,
+    "genres": ["Jazz"],
+    "labels": ["EMI", "RCA vector", "Four flies", "RCA italiana"],
+    "website": "https://en.wikipedia.org/wiki/Piero_Umiliani",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/5/57/Piero_Umiliani_ritratto_nel_suo_studio.jpg",
+    "shortDescription": "Piero Umiliani was born on 17 July 1926 in Florence, Tuscany, Italy. He was a composer, known for The Spectacular Now (2013), Big Deal on Madonna Street (1958) and The Muppets (2011). He died on 14 February 2001 in Rome, Lazio, Italy."
+  },
+  {
+    "id": 5,
+    "artistName": "Beth Gibbons",
+    "name": "Beth Gibbons",
+    "birthdate": "1965-01-04",
+    "activeSince": 1994,
+    "genres": ["Pop", "Trip-Hop"],
+    "labels": ["Go! beat records", "Go! discs", "Sanctuary records"],
+    "website": "https://bethgibbons.net/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/67/Beth_Gibbons_-_Portishead_-_Roskilde_Festival_2011_-_Orange_Scene.jpg",
+    "shortDescription": "Beth Gibbons (born 4 January 1965, in Exeter, Devon, England) is the vocalist for the trip-hop band Portishead which released the critically acclaimed début album Dummy in 1994. She met bandmate Geoff Barrow in a government business start-up scheme."
   }
 ]

@@ -75,3 +75,37 @@ app.delete("/artists/:id", async (request, response) => {
 
   response.json();
 });
+
+
+//GET FAVORITE ARTISTS
+app.get("/favorites", async (request, response) => {
+  const data = await fs.readFile("./data/favorites.json");
+  const favorites = JSON.parse(data);
+  response.json(favorites);
+});
+
+//FAVORITE CREATE
+app.post("/favorites", async (request, response) => {
+  const newArtist = request.body;
+  // newArtist.id = new Date().getTime();
+
+  const data = await fs.readFile("./data/favorites.json");
+  const artists = JSON.parse(data);
+  artists.push(newArtist);
+  console.log(newArtist);
+  fs.writeFile("./data/favorites.json", JSON.stringify(artists));
+  response.json(artists);
+});
+
+//FAVORITE DELETE
+app.delete("/favorites/:id", async (request, response) => {
+  const id = Number(request.params.id);
+
+  const data = await fs.readFile("./data/favorites.json");
+  const artists = JSON.parse(data);
+
+  const newArtists = artists.filter((artist) => artist.id !== id);
+  fs.writeFile("./data/favorites.json", JSON.stringify(newArtists));
+
+  response.json();
+});
