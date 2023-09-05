@@ -1,7 +1,7 @@
 "use strict";
 
 import express, { json, request, response } from "express";
-import fs from "fs/promises"
+import fs from "fs/promises";
 import cors from "cors";
 
 const app = express();
@@ -11,18 +11,37 @@ app.use(express.json());
 app.use(cors());
 
 app.listen(port, () => {
-   console.log(`Server initiated on http://localhost:${port}`); 
+  console.log(`Server initiated on http://localhost:${port}`);
 });
 
 app.get("/", (request, response) => {
-    response.send("hello express");
+  response.send("hello express");
 });
 
 //GET artists
 app.get("/artists", async (request, response) => {
-    const data = await fs.readFile("./data/artists.json");
-    const artists = JSON.parse(data); 
-    response.json(artists);
+  const data = await fs.readFile("./data/artists.json");
+  const artists = JSON.parse(data);
+  response.json(artists);
+});
+
+//GET artists ON SPECIFIC ID
+app.get("/artists/:id", async (request, response) => {
+  const id = Number(request.params.id);
+
+  const data = await fs.readFile("./data/artists.json", `utf-8`, (err, data) => {
+    if (err) {
+      response.status(404);
+      return response.json("Id does not exist")
+    }
+    response.status(200)
+    return response.send(data);
+  });
+  const artists = JSON.parse(data);
+
+  let artistToGet = artists.find((artist) => artist.id === id);
+
+  response.json(artistToGet);
 });
 
 //POST/CREATE new artist
@@ -45,22 +64,22 @@ app.put("/artists/:id", async (request, response) => {
   const data = await fs.readFile("./data/artists.json");
   const artists = JSON.parse(data);
 
-  let artistToUpdate = artists.find(artist => artist.id === id);
-  
+  let artistToUpdate = artists.find((artist) => artist.id === id);
+
   const body = request.body;
-  
+
   artistToUpdate.artistName = body.artistName;
   artistToUpdate.name = body.name;
-  artistToUpdate.birthdate = body.birthdate
-  artistToUpdate.activeSince = body.activeSince
-  artistToUpdate.genres = body.genres
-  artistToUpdate.labels = body.labels
-  artistToUpdate.website = body.website
-  artistToUpdate.image = body.image
-  artistToUpdate.shortDescription = body.shortDescription
+  artistToUpdate.birthdate = body.birthdate;
+  artistToUpdate.activeSince = body.activeSince;
+  artistToUpdate.genres = body.genres;
+  artistToUpdate.labels = body.labels;
+  artistToUpdate.website = body.website;
+  artistToUpdate.image = body.image;
+  artistToUpdate.shortDescription = body.shortDescription;
 
   fs.writeFile("./data/artists.json", JSON.stringify(artists));
-  response.json(artists)
+  response.json(artists);
 });
 
 //DELETE artist
@@ -70,12 +89,11 @@ app.delete("/artists/:id", async (request, response) => {
   const data = await fs.readFile("./data/artists.json");
   const artists = JSON.parse(data);
 
-  const newArtists = artists.filter(artist => artist.id !== id);
+  const newArtists = artists.filter((artist) => artist.id !== id);
   fs.writeFile("./data/artists.json", JSON.stringify(newArtists));
 
   response.json();
 });
-
 
 //GET FAVORITE ARTISTS
 app.get("/favorites", async (request, response) => {
