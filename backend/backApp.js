@@ -29,19 +29,17 @@ app.get("/artists", async (request, response) => {
 app.get("/artists/:id", async (request, response) => {
   const id = Number(request.params.id);
 
-  const data = await fs.readFile("./data/artists.json", `utf-8`, (err, data) => {
-    if (err) {
-      response.status(404);
-      return response.json("Id does not exist")
-    }
-    response.status(200)
-    return response.send(data);
-  });
+  const data = await fs.readFile("./data/artists.json");
   const artists = JSON.parse(data);
 
   let artistToGet = artists.find((artist) => artist.id === id);
 
-  response.json(artistToGet);
+  if (!artistToGet) {
+    response.status(404);
+    return response.json("404, Id does not exist");
+  } else {
+    response.json(artistToGet);
+  }
 });
 
 //POST/CREATE new artist
@@ -53,7 +51,7 @@ app.post("/artists", async (request, response) => {
   const artists = JSON.parse(data);
   artists.push(newArtist);
   console.log(newArtist);
-  fs.writeFile("./data/artists.json", JSON.stringify(artists));
+  fs.writeFile("./data/artists.json", JSON.stringify(artists, null, 2));
   response.json(artists);
 });
 
@@ -78,7 +76,7 @@ app.put("/artists/:id", async (request, response) => {
   artistToUpdate.image = body.image;
   artistToUpdate.shortDescription = body.shortDescription;
 
-  fs.writeFile("./data/artists.json", JSON.stringify(artists));
+  fs.writeFile("./data/artists.json", JSON.stringify(artists, null, 2));
   response.json(artists);
 });
 
@@ -90,8 +88,14 @@ app.delete("/artists/:id", async (request, response) => {
   const artists = JSON.parse(data);
 
   const newArtists = artists.filter((artist) => artist.id !== id);
-  fs.writeFile("./data/artists.json", JSON.stringify(newArtists));
-
+  fs.writeFile("./data/artists.json", JSON.stringify(newArtists, null, 2));
+  // console.log(newArtists.lenght)
+  // if (!newArtists > 1) {
+  //   response.status(404);
+  //   return response.json("Cannot delete, id does not exist")
+  // } else {
+  //   response.status(200)
+  // }
   response.json();
 });
 
@@ -111,7 +115,7 @@ app.post("/favorites", async (request, response) => {
   const artists = JSON.parse(data);
   artists.push(newArtist);
   console.log(newArtist);
-  fs.writeFile("./data/favorites.json", JSON.stringify(artists));
+  fs.writeFile("./data/favorites.json", JSON.stringify(artists, null, 2));
   response.json(artists);
 });
 
@@ -123,7 +127,7 @@ app.delete("/favorites/:id", async (request, response) => {
   const artists = JSON.parse(data);
 
   const newArtists = artists.filter((artist) => artist.id !== id);
-  fs.writeFile("./data/favorites.json", JSON.stringify(newArtists));
+  fs.writeFile("./data/favorites.json", JSON.stringify(newArtists, null, 2));
 
   response.json();
 });
