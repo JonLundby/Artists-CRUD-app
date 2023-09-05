@@ -27,7 +27,7 @@ function startApp() {
   //sort
   document.querySelector("#sort-by").addEventListener("change", sortBy);
   
-  //filter
+  //filters
   document.querySelector("#filter-genre").addEventListener("change", filterArtists);
   document.querySelector("#filter-label").addEventListener("change", filterArtists);
   document.querySelector("#fav-only").addEventListener("change", filterFavOnly);
@@ -36,9 +36,10 @@ function startApp() {
 async function updateArtistGrid() {
   artists = await getArtists();
   favoriteArtists = await getFavArtists();
-  console.log(artists);
-  console.log(favoriteArtists);
+  // console.log(artists);
+  // console.log(favoriteArtists);
   showArtists(artists);
+  console.log("GRID WAS UPDATED!!")
 }
 
 function showArtists(artists) {
@@ -57,7 +58,7 @@ function generateArtist(object) {
                               <p>Born: ${object.birthdate}</p>
                               <button class="btn-update">Update</button>
                               <button class="btn-delete">Delete</button>
-                              <button class="btn-favorite">Fav</button>
+                              <button class="btn-favorite">favorite</button>
                           </article>
       `;
 
@@ -122,6 +123,8 @@ function generateArtist(object) {
     //setting the current objects id to the form
     form.setAttribute("data-id", object.id);
 
+    // console.log(form);
+
     document.querySelector("#dialog-update-artist").showModal();
   }
   
@@ -134,7 +137,7 @@ function showCreateArtist(event) {
   document.querySelector("#dialog-create-artist").showModal();
 }
 
-// ----- SORT ARTISTS ----- \\
+// ----- FILTER FAV ARTISTS ----- \\
 function filterFavOnly() {
   const favCheck = document.querySelector("#fav-only");
   if (favCheck.checked) {
@@ -187,4 +190,4 @@ function filterArtists() {
 
 }
 
-export { favoriteArtists, updateArtistGrid };
+export { selectedArtist, favoriteArtists, updateArtistGrid };

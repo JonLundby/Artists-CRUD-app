@@ -16,7 +16,7 @@
     "artistName": "Cornelis Vreeswijk",
     "name": "Cornelis Vreeswijk",
     "birthdate": "1937-08-08",
-    "activeSince": 1964,
+    "activeSince": "1964",
     "genres": ["Folk"],
     "labels": ["EMI", "Universal records", "Phillips records"],
     "website": "https://en.wikipedia.org/wiki/Cornelis_Vreeswijk",
@@ -70,5 +70,17 @@
     "website": "https://bethgibbons.net/",
     "image": "https://upload.wikimedia.org/wikipedia/commons/6/67/Beth_Gibbons_-_Portishead_-_Roskilde_Festival_2011_-_Orange_Scene.jpg",
     "shortDescription": "Beth Gibbons (born 4 January 1965, in Exeter, Devon, England) is the vocalist for the trip-hop band Portishead which released the critically acclaimed début album Dummy in 1994. She met bandmate Geoff Barrow in a government business start-up scheme."
+  },
+  {
+    "artistName": "Jean-Jacques Perrey",
+    "name": "Jean Marcel Leroy",
+    "birthdate": "1920-01-20",
+    "activeSince": "1958",
+    "genres": ["Electronic"],
+    "labels": ["Vanguard records", "Lo recordings", "Forgotten futures"],
+    "website": "http://www.jean-jacquesperrey.com/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Jean-Jacques_Perrey.jpg",
+    "shortDescription": "Jean Marcel Leroy better known as Jean-Jacques Perrey, was a French electronic music performer, composer, producer, and promoter. He is considered a pioneer of pop electronica.",
+    "id": 6
   }
 ]

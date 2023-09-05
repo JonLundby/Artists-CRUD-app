@@ -50,7 +50,7 @@ app.post("/artists", async (request, response) => {
   const data = await fs.readFile("./data/artists.json");
   const artists = JSON.parse(data);
   artists.push(newArtist);
-  console.log(newArtist);
+  // console.log(newArtist);
   fs.writeFile("./data/artists.json", JSON.stringify(artists, null, 2));
   response.json(artists);
 });
@@ -109,13 +109,13 @@ app.get("/favorites", async (request, response) => {
 //FAVORITE CREATE
 app.post("/favorites", async (request, response) => {
   const newArtist = request.body;
-  // newArtist.id = new Date().getTime();
 
   const data = await fs.readFile("./data/favorites.json");
   const artists = JSON.parse(data);
   artists.push(newArtist);
-  console.log(newArtist);
+
   fs.writeFile("./data/favorites.json", JSON.stringify(artists, null, 2));
+
   response.json(artists);
 });
 

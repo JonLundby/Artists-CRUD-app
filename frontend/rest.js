@@ -1,4 +1,4 @@
-import { favoriteArtists, updateArtistGrid} from "./frontApp.js";
+import { selectedArtist, favoriteArtists, updateArtistGrid} from "./frontApp.js";
 //GLOBAL VARIABLES (ENDPOINT)
 // const endpoint = "../backend/data/artists.json";
 const endpoint = "http://localhost:3000";
@@ -83,6 +83,7 @@ async function updateArtist(event) {
   const website = form.website.value;
   const image = form.image.value;
   const shortDescription = form.shortDescription.value;
+  const id = selectedArtist.id;
 
   function genresArr() {
     let arr = [];
@@ -103,7 +104,7 @@ async function updateArtist(event) {
   }
 
   // update artist
-  const updatedArtist = { artistName, name, birthdate, activeSince, genres, labels, website, image, shortDescription };
+  const updatedArtist = { artistName, name, birthdate, activeSince, genres, labels, website, image, shortDescription, id};
   const updateAsJson = JSON.stringify(updatedArtist);
   const response = await fetch(`${endpoint}/artists/${selectedArtist.id}`, {
     method: "PUT",
@@ -121,7 +122,7 @@ async function updateArtist(event) {
 // ----- DELETE ARTIST ----- \\
 async function deleteArtist(id) {
   console.log("artist deleted");
-  console.log(id);
+  // console.log(id);
   const response = await fetch(`${endpoint}/artists/${id}`, {
     method: "DELETE",
   });
@@ -133,14 +134,15 @@ async function deleteArtist(id) {
 
 // ----- FAVORITE ARTIST ----- \\
 async function createFavoriteArtist(artist, id) {
-  console.log(favoriteArtists);
-  console.log(id);
+  // event.preventDefault();
 
-  let test = favoriteArtists.find((artist) => artist.id === id);
-  console.log(test);
+  //if clicked artist is already in favoriteArtists list, it returns to favoriteArtistScan if artist is returned then it is already favorited
+  let favoriteArtistScan = favoriteArtists.find((artist) => artist.id === id);
+  // console.log(favoriteArtistScan);
 
-  if (typeof test === "undefined") {
-    console.log("no similarities");
+  //checks what request to send based on favoriteArtistScan
+  if (typeof favoriteArtistScan === "undefined") {
+    // console.log("no similarities");
     const favArtistAsJson = JSON.stringify(artist);
     await fetch(`${endpoint}/favorites`, {
       method: "POST",
