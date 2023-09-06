@@ -1,4 +1,4 @@
-import { selectedArtist, favoriteArtists, updateArtistGrid} from "./frontApp.js";
+import { selectedArtist, favoriteArtists, updateArtistGrid } from "./frontApp.js";
 //GLOBAL VARIABLES (ENDPOINT)
 // const endpoint = "../backend/data/artists.json";
 const endpoint = "http://localhost:3000";
@@ -72,8 +72,11 @@ async function createArtist(event) {
 // ----- UPDATE ARTIST ----- \\
 async function updateArtist(event) {
   event.preventDefault();
+
+  //shorthand for form
   const form = event.target;
 
+  //storing the form information in variables
   const artistName = form.artistName.value;
   const name = form.name.value;
   const birthdate = form.birthdate.value;
@@ -85,6 +88,7 @@ async function updateArtist(event) {
   const shortDescription = form.shortDescription.value;
   const id = selectedArtist.id;
 
+  //converting genres string to array
   function genresArr() {
     let arr = [];
     const str = form.genres.value;
@@ -94,6 +98,7 @@ async function updateArtist(event) {
     return arr;
   }
 
+  //converting labels string to array
   function labelsArr() {
     let arr = [];
     const str = form.labels.value;
@@ -103,8 +108,8 @@ async function updateArtist(event) {
     return arr;
   }
 
-  // update artist
-  const updatedArtist = { artistName, name, birthdate, activeSince, genres, labels, website, image, shortDescription, id};
+  //creating an artist object, converting it to json format and "PUT" requesting the json data to specified endpoint destination
+  const updatedArtist = { artistName, name, birthdate, activeSince, genres, labels, website, image, shortDescription, id };
   const updateAsJson = JSON.stringify(updatedArtist);
   const response = await fetch(`${endpoint}/artists/${selectedArtist.id}`, {
     method: "PUT",
@@ -112,9 +117,9 @@ async function updateArtist(event) {
     headers: { "Content-Type": "application/json" },
   });
 
+  console.log(response);
   if (response.ok) {
     // if success, update the artist grid
-    console.log("artist updated");
     updateArtistGrid();
   }
 }
@@ -133,16 +138,12 @@ async function deleteArtist(id) {
 }
 
 // ----- FAVORITE ARTIST ----- \\
-async function createFavoriteArtist(artist, id) {
-  // event.preventDefault();
-
+async function toggleFavoriteArtist(artist, id) {
   //if clicked artist is already in favoriteArtists list, it returns to favoriteArtistScan if artist is returned then it is already favorited
   let favoriteArtistScan = favoriteArtists.find((artist) => artist.id === id);
-  // console.log(favoriteArtistScan);
 
   //checks what request to send based on favoriteArtistScan
   if (typeof favoriteArtistScan === "undefined") {
-    // console.log("no similarities");
     const favArtistAsJson = JSON.stringify(artist);
     await fetch(`${endpoint}/favorites`, {
       method: "POST",
@@ -157,4 +158,4 @@ async function createFavoriteArtist(artist, id) {
   }
 }
 
-export { getArtists, getFavArtists, createArtist, updateArtist, deleteArtist, createFavoriteArtist };
+export { getArtists, getFavArtists, createArtist, updateArtist, deleteArtist, toggleFavoriteArtist };

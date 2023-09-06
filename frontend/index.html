@@ -67,8 +67,12 @@
     <dialog id="dialog-detail-view">
       <h2 id="detail-view-artistname"></h2>
       <h4 id="detail-view-name"></h4>
-      <h6 id="detail-view-birthdate"></h6>
+      <p>Date of birth<span id="detail-view-birthdate"></span></p>
+      <p>Career Started: <span id="detail-view-activeSince"></span></p>
       <p id="detail-view-description"></p>
+      <ul id="detail-view-genres">Genres:</ul>
+      <ul id="detail-view-labels">Labels:</ul>
+      <a href="" id="detail-view-website">Website</a>      
       <!-- todo - more info? -->
     </dialog>
 
@@ -110,8 +114,8 @@
     </dialog>
 
     <dialog id="dialog-update-artist">
+      <!-- form update -->
       <form action="" method="dialog" id="form-update-artist">
-        <!-- form update -->
         <h1>Update artist</h1>
         <!-- artist name -->
         <label for="artist-name-update">Artist name:</label>
@@ -141,11 +145,12 @@
         <label for="short-description-update">Short description:</label>
         <input type="text" name="shortDescription" id="short-description-update" />
 
-        <!-- create btn -->
+        <!-- update btn -->
         <button type="submit">Update</button>
       </form>
     </dialog>
 
+    <!-- todo -> doublecheck if user wants to delete -->
     <dialog id="dialog-delete-artist">
       <form action="" method="dialog" id="dialog-delete-artist">
         <!-- form delete confirmation -->

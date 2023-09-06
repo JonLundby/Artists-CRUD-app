@@ -1,12 +1,13 @@
-"use strict";
-
+//Imports
 import express, { json, request, response } from "express";
 import fs from "fs/promises";
 import cors from "cors";
 
+//variabels "app" to associate with express framework and port to hold port number
 const app = express();
 const port = 3000;
 
+//set express to use json method and cors
 app.use(express.json());
 app.use(cors());
 
@@ -14,6 +15,7 @@ app.listen(port, () => {
   console.log(`Server initiated on http://localhost:${port}`);
 });
 
+//GET for root route
 app.get("/", (request, response) => {
   response.send("hello express");
 });
@@ -55,17 +57,21 @@ app.post("/artists", async (request, response) => {
   response.json(artists);
 });
 
-//PUT/UPDATE artist
+//PUT/UPDATE artist with generic id
 app.put("/artists/:id", async (request, response) => {
   const id = Number(request.params.id);
 
+  //reading all json data and storing it as a js object
   const data = await fs.readFile("./data/artists.json");
   const artists = JSON.parse(data);
 
+  //finding the specific artist matching the id
   let artistToUpdate = artists.find((artist) => artist.id === id);
 
+  //shorthand for the requested body
   const body = request.body;
 
+  //setting new property values from the found artist to the requested body 
   artistToUpdate.artistName = body.artistName;
   artistToUpdate.name = body.name;
   artistToUpdate.birthdate = body.birthdate;
@@ -76,6 +82,7 @@ app.put("/artists/:id", async (request, response) => {
   artistToUpdate.image = body.image;
   artistToUpdate.shortDescription = body.shortDescription;
 
+  //writing the json data anew and sending it back as response
   fs.writeFile("./data/artists.json", JSON.stringify(artists, null, 2));
   response.json(artists);
 });

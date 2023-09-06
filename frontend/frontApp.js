@@ -1,13 +1,14 @@
 "use strict";
 
 //Imports...
-import { getArtists, getFavArtists, createArtist, updateArtist, deleteArtist, createFavoriteArtist } from "./rest.js";
+import { getArtists, getFavArtists, createArtist, updateArtist, deleteArtist, toggleFavoriteArtist } from "./rest.js";
 
 //GLOBAL VARIABLES
 let artists;
 let favoriteArtists;
 let artistsFiltered;
 let selectedArtist;
+let showingFavs = false;
 
 window.addEventListener("load", startApp());
 
@@ -36,8 +37,6 @@ function startApp() {
 async function updateArtistGrid() {
   artists = await getArtists();
   favoriteArtists = await getFavArtists();
-  // console.log(artists);
-  // console.log(favoriteArtists);
   showArtists(artists);
   console.log("GRID WAS UPDATED!!")
 }
@@ -65,7 +64,6 @@ function generateArtist(object) {
   document.querySelector("#artists-container").insertAdjacentHTML("beforeend", htmlPost);
 
   // ---------- Eventlisteners on child elements---------- \\
-  //todo
   document.querySelector("#artists-container article:last-child").addEventListener("click", showDetails);
 
   document.querySelector("#artists-container article:last-child .btn-update").addEventListener("click", (event) => {
@@ -78,14 +76,31 @@ function generateArtist(object) {
   });
   document.querySelector("#artists-container article:last-child .btn-favorite").addEventListener("click", (event) => {
     event.stopPropagation();
-    createFavoriteArtist(object, object.id);
+    toggleFavoriteArtist(object, object.id);
   });
 
+  //Detal view
   function showDetails() {
     document.querySelector("#detail-view-artistname").textContent = object.artistName;
     document.querySelector("#detail-view-name").textContent = object.name;
     document.querySelector("#detail-view-birthdate").textContent = object.birthdate;
+    document.querySelector("#detail-view-activeSince").textContent = object.activeSince;
     document.querySelector("#detail-view-description").textContent = object.shortDescription;
+    
+    for (let i = 0; i < object.genres.length; i++) {
+      const htmlGenre = /*html*/ `<li>${object.genres[i]}</li>`;
+
+      document.querySelector("#detail-view-genres").insertAdjacentHTML("beforeend", htmlGenre);
+    }
+
+    for (let i = 0; i < object.labels.length; i++) {
+      const htmlLabel = /*html*/ `<li>${object.labels[i]}</li>`;
+
+      document.querySelector("#detail-view-labels").insertAdjacentHTML("beforeend", htmlLabel);
+    }
+
+    document.querySelector("#detail-view-website").setAttribute("href", object.website);
+
     // todo - add more info? And make some css
 
     document.querySelector("#dialog-detail-view").showModal();
@@ -93,9 +108,13 @@ function generateArtist(object) {
 
 
   function updateArtistClicked() {
+    //storing the artist/object clicked in selectedArtist variable
     selectedArtist = object;
+
+    //shorthand for updateform
     const form = document.querySelector("#form-update-artist");
 
+    //propagating the update form with the properties of selectedArtist
     form.artistName.value = object.artistName;
     form.name.value = object.name;
     form.birthdate.value = object.birthdate;
@@ -106,6 +125,7 @@ function generateArtist(object) {
     form.image.value = object.image;
     form.shortDescription.value = object.shortDescription;
 
+    //converting genres and labels to strings that will later be converted back to an array (see "updateArtist" function in "rest.js")
     function correctGenresProp() {
       let str = "";
       str = object.genres.join(", ");
@@ -123,8 +143,7 @@ function generateArtist(object) {
     //setting the current objects id to the form
     form.setAttribute("data-id", object.id);
 
-    // console.log(form);
-
+    //showing modal window/dialog
     document.querySelector("#dialog-update-artist").showModal();
   }
   
@@ -141,8 +160,10 @@ function showCreateArtist(event) {
 function filterFavOnly() {
   const favCheck = document.querySelector("#fav-only");
   if (favCheck.checked) {
+    showingFavs = true;
     showArtists(favoriteArtists);
   } else {
+    showArtists = false;
     showArtists(artists);
   }
 }
@@ -154,7 +175,6 @@ function sortBy(event) {
   const favCheck = document.querySelector("#fav-only");
 
   if (value === "none" && !favCheck.checked) {
-    console.log("sorting by artist none");
     updateArtistGrid();
   } else if (value === "artist-name" && !favCheck.checked) {
     // console.log("sorting by artist name");
@@ -177,15 +197,10 @@ function sortBy(event) {
 function filterArtists() {
   let valueGenre = document.querySelector("#filter-genre").value;
   let valueLabel = document.querySelector("#filter-label").value;
-  console.log(valueGenre)
-  
-  artistsFiltered = artists.filter(checkFilters);
 
-  function checkFilters(artist) {
-    return artist.genres.includes(valueGenre);
-  }
+  artistsFiltered = artists.filter((checkFilters));
 
-  console.log(artistsFiltered);
+ 
   // showArtists(artistsFiltered);
 
 }

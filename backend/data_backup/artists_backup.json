@@ -28,7 +28,7 @@
     "artistName": "Astrud Gilberto",
     "name": "Astrud Gilberto",
     "birthdate": "1940-03-29",
-    "activeSince": 1964,
+    "activeSince": "1964",
     "genres": ["Brazilian Bossa Nova", "Jazz"],
     "labels": ["Verve records", "CTI records", "Universal music group", "Audio fidelity records", "Perception records", "Polygram records", "Pony canyon", "Magya productions"],
     "website": "https://en.wikipedia.org/wiki/Astrud_Gilberto",
@@ -82,5 +82,17 @@
     "image": "https://upload.wikimedia.org/wikipedia/commons/b/b0/Jean-Jacques_Perrey.jpg",
     "shortDescription": "Jean Marcel Leroy better known as Jean-Jacques Perrey, was a French electronic music performer, composer, producer, and promoter. He is considered a pioneer of pop electronica.",
     "id": 6
+  },
+  {
+    "artistName": "Hiroshi Yoshimura",
+    "name": "Hiroshi Yoshimura",
+    "birthdate": "1940-10-22",
+    "activeSince": "1982",
+    "genres": ["Ambient", "New age"],
+    "labels": ["17853 records", "Eastworld", "air RECORDS"],
+    "website": "https://en.wikipedia.org/wiki/Hiroshi_Yoshimura",
+    "image": "https://upload.wikimedia.org/wikipedia/en/c/ca/Hiroshi_Yoshimura%2CBlack_And_White.jpg",
+    "shortDescription": "Hiroshi Yoshimura was a Japanese composer and sound designer. A pioneer in ambient, environmental, and new age music, his beloved 1982 album Music for Nine Postcards is considered to be a classic within these genres.",
+    "id": 7
   }
 ]
