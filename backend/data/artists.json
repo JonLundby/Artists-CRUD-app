@@ -4,7 +4,7 @@
     "artistName": "Madlib",
     "name": "Otis Jackson Jr.",
     "birthdate": "1973-10-24",
-    "activeSince": "1993",
+    "activeSince": 1993,
     "genres": [
       "Hip hop/Rap",
       "Jazz"
@@ -42,7 +42,7 @@
     "birthdate": "1940-03-29",
     "activeSince": "1964",
     "genres": [
-      "Brazilian Bossa Nova",
+      "Brazilian bossa nova",
       "Jazz"
     ],
     "labels": [
@@ -163,5 +163,24 @@
     "image": "https://upload.wikimedia.org/wikipedia/en/c/ca/Hiroshi_Yoshimura%2CBlack_And_White.jpg",
     "shortDescription": "Hiroshi Yoshimura was a Japanese composer and sound designer. A pioneer in ambient, environmental, and new age music, his beloved 1982 album Music for Nine Postcards is considered to be a classic within these genres.",
     "id": 7
+  },
+  {
+    "artistName": "Antônio Carlos Jobim",
+    "name": "Antônio Carlos Jobim",
+    "birthdate": "1927-01-25",
+    "activeSince": "1963",
+    "genres": [
+      "Brazilian bossa nova",
+      "Jazz"
+    ],
+    "labels": [
+      "Verve records",
+      "CTI records",
+      "Sony"
+    ],
+    "website": "https://en.wikipedia.org/wiki/Ant%C3%B4nio_Carlos_Jobim",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/8/89/20170823_Plastik_zu_Ehren_Ant%C3%B4nio_Carlos_Jobims.jpg",
+    "shortDescription": "Considered one of the great exponents of Brazilian music, Jobim internationalized bossa nova and, with the help of important American artists, merged it with jazz in the 1960s to create a new sound, with popular success. As a result, he is sometimes known as the \"father of bossa nova\".",
+    "id": 1694029603726
   }
 ]

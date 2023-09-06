@@ -8,7 +8,6 @@ let artists;
 let favoriteArtists;
 let artistsFiltered;
 let selectedArtist;
-let showingFavs = false;
 
 window.addEventListener("load", startApp());
 
@@ -42,6 +41,7 @@ async function updateArtistGrid() {
 }
 
 function showArtists(artists) {
+  console.log("showArtists called...");
   document.querySelector("#artists-container").innerHTML = "";
   for (const artist of artists) {
     generateArtist(artist);
@@ -160,10 +160,8 @@ function showCreateArtist(event) {
 function filterFavOnly() {
   const favCheck = document.querySelector("#fav-only");
   if (favCheck.checked) {
-    showingFavs = true;
     showArtists(favoriteArtists);
   } else {
-    showArtists = false;
     showArtists(artists);
   }
 }
@@ -175,13 +173,11 @@ function sortBy(event) {
   const favCheck = document.querySelector("#fav-only");
 
   if (value === "none" && !favCheck.checked) {
-    updateArtistGrid();
+    showArtists(artists);
   } else if (value === "artist-name" && !favCheck.checked) {
-    // console.log("sorting by artist name");
     artists.sort((artist1, artist2) => artist1.artistName.localeCompare(artist2.artistName));
     showArtists(artists);
   } else if (value === "civil-name" && !favCheck.checked) {
-    // console.log("sorting by civil name");
     artists.sort((artist1, artist2) => artist1.name.localeCompare(artist2.name));
     showArtists(artists);
   } else if (value === "birthdate-ascending" && !favCheck.checked) {
@@ -190,6 +186,18 @@ function sortBy(event) {
   } else if (value === "birthdate-descending" && !favCheck.checked) {
     artists.sort((artist1, artist2) => new Date(artist1.birthdate).getTime() - new Date(artist2.birthdate).getTime()).reverse();
     showArtists(artists);
+  } else if (favCheck.checked && value === "artist-name") {
+    favoriteArtists.sort((artist1, artist2) => artist1.artistName.localeCompare(artist2.artistName));
+    showArtists(favoriteArtists);
+  } else if (favCheck.checked && value === "civil-name") {
+    favoriteArtists.sort((artist1, artist2) => artist1.name.localeCompare(artist2.name));
+    showArtists(favoriteArtists);
+  } else if (favCheck.checked && value === "birthdate-ascending") {
+    favoriteArtists.sort((artist1, artist2) => new Date(artist1.birthdate).getTime() - new Date(artist2.birthdate).getTime());
+    showArtists(favoriteArtists);
+  } else if (favCheck.checked && value === "birthdate-descending") {
+    favoriteArtists.sort((artist1, artist2) => new Date(artist1.birthdate).getTime() - new Date(artist2.birthdate).getTime()).reverse();
+    showArtists(favoriteArtists);
   }
 }
 
@@ -197,12 +205,26 @@ function sortBy(event) {
 function filterArtists() {
   let valueGenre = document.querySelector("#filter-genre").value;
   let valueLabel = document.querySelector("#filter-label").value;
+  let artistsByGenre = [];
+  let artistsBylabel = [];
+  let artistsByGenreAndLabel = [];
 
-  artistsFiltered = artists.filter((checkFilters));
+  artistsByGenre = artists.filter((artist) => artist.genres.includes(valueGenre));
+  artistsBylabel = artists.filter((artist) => artist.labels.includes(valueLabel));
+  artistsByGenreAndLabel = artists.filter((artist) => artist.genres.includes(valueGenre) && artist.labels.includes(valueLabel));
+  
+  artistsFiltered = artistsByGenre.concat(artistsBylabel);
 
- 
-  // showArtists(artistsFiltered);
-
+  if (valueGenre === "none" && valueLabel === "none") {
+    showArtists(artists);
+  } else if (valueGenre === "none" && valueLabel !== "none") {
+    showArtists(artistsBylabel)
+  } else if (valueLabel === "none" && valueGenre !== "none") {
+    showArtists(artistsByGenre)
+  } else if (valueLabel !== "none" && valueGenre !== "none") {
+    showArtists(artistsByGenreAndLabel);
+  }
+  
 }
 
 export { selectedArtist, favoriteArtists, updateArtistGrid };
