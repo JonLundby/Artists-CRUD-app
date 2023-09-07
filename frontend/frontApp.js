@@ -6,8 +6,9 @@ import { getArtists, getFavArtists, createArtist, updateArtist, deleteArtist, to
 //GLOBAL VARIABLES
 let artists;
 let favoriteArtists;
-let artistsFiltered;
+// let artistsFiltered;
 let selectedArtist;
+let showingFavs = false;
 
 window.addEventListener("load", startApp());
 
@@ -40,12 +41,15 @@ function startApp() {
 async function updateArtistGrid() {
   artists = await getArtists();
   favoriteArtists = await getFavArtists();
-  showArtists(artists);
+  if (!showingFavs) {
+    showArtists(artists);
+  } else {
+    showArtists(favoriteArtists);
+  }
   console.log("GRID WAS UPDATED!!")
 }
 
 function showArtists(artists) {
-  console.log("showArtists called...");
   document.querySelector("#artists-container").innerHTML = "";
   for (const artist of artists) {
     generateArtist(artist);
@@ -180,10 +184,13 @@ function showCreateArtist(event) {
 function filterFavOnly() {
   const favCheck = document.querySelector("#fav-only");
   if (favCheck.checked) {
-    showArtists(favoriteArtists);
+    // showArtists(favoriteArtists);
+    showingFavs = true;
   } else {
-    showArtists(artists);
+    // showArtists(artists);
+    showingFavs = false;
   }
+  updateArtistGrid();
 }
 
 // ----- SORT ARTISTS ----- \\
@@ -233,7 +240,7 @@ function filterArtists() {
   artistsBylabel = artists.filter((artist) => artist.labels.includes(valueLabel));
   artistsByGenreAndLabel = artists.filter((artist) => artist.genres.includes(valueGenre) && artist.labels.includes(valueLabel));
   
-  artistsFiltered = artistsByGenre.concat(artistsBylabel);
+  // artistsFiltered = artistsByGenre.concat(artistsBylabel);
 
   if (valueGenre === "none" && valueLabel === "none") {
     showArtists(artists);

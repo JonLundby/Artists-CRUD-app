@@ -1,39 +1,28 @@
 [
   {
-    "id": 3,
-    "artistName": "Roedelius",
-    "name": "Hans-Joachim Roedelius",
-    "birthdate": "1934-10-26",
-    "activeSince": 1971,
+    "id": 1,
+    "artistName": "Cornelis Vreeswijk",
+    "name": "Cornelis Vreeswijk",
+    "birthdate": "1937-08-08",
+    "activeSince": "1964",
     "genres": [
-      "Krautrock",
-      "Electronic",
-      "Synth-pop",
-      "New age",
-      "Avant-garde",
-      "Ambient",
-      "Psychedelic rock"
+      "Folk"
     ],
     "labels": [
-      "Bureau B",
-      "Sky records",
-      "Grönland records",
-      "Rykodisc",
-      "Caroline records",
-      "Barclay",
-      "E.G. records",
-      "Psychonavigation records",
-      "PolyGram"
+      "EMI",
+      "Universal records",
+      "Phillips records"
     ],
-    "website": "https://www.roedelius.com/",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/9/94/Hans_Joachim_Roedelius_2015.jpg",
-    "shortDescription": "Hans-Joachim Roedelius is a German electronic musician and composer, best known as a co-founder of the influential 'kosmische' groups Cluster and Harmonia. He also performed in the ambient jazz trio Aquarello, and released several solo studio albums."
+    "website": "https://en.wikipedia.org/wiki/Cornelis_Vreeswijk",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Cornelis_Vreeswijk_%281973%29.jpg",
+    "shortDescription": "Cornelis Vreeswijk was a Dutch-Swedish songwriter, singer, poet and actor known for his influential role in modernizing the Swedish ballad and introducing it to a wider audience through merging tradition with more diverse musical styles."
   },
   {
-    "artistName": "Antônio Carlos Jobim",
-    "name": "Antônio Carlos Jobim",
-    "birthdate": "1927-01-25",
-    "activeSince": "1963",
+    "id": 2,
+    "artistName": "Astrud Gilberto",
+    "name": "Astrud Gilberto",
+    "birthdate": "1940-03-29",
+    "activeSince": "1964",
     "genres": [
       "Brazilian bossa nova",
       "Jazz"
@@ -41,12 +30,16 @@
     "labels": [
       "Verve records",
       "CTI records",
-      "Sony"
+      "Universal music group",
+      "Audio fidelity records",
+      "Perception records",
+      "Polygram records",
+      "Pony canyon",
+      "Magya productions"
     ],
-    "website": "https://en.wikipedia.org/wiki/Ant%C3%B4nio_Carlos_Jobim",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/8/89/20170823_Plastik_zu_Ehren_Ant%C3%B4nio_Carlos_Jobims.jpg",
-    "shortDescription": "Considered one of the great exponents of Brazilian music, Jobim internationalized bossa nova and, with the help of important American artists, merged it with jazz in the 1960s to create a new sound, with popular success. As a result, he is sometimes known as the \"father of bossa nova\".",
-    "id": 1694029603726
+    "website": "https://en.wikipedia.org/wiki/Astrud_Gilberto",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d5/Astrud_Gilberto_1966_%28cropped%29.jpg",
+    "shortDescription": "Astrud Gilberto was a Brazilian samba and bossa nova singer and songwriter. She gained international attention in the mid-1960s following her recording of the song The Girl from Ipanema."
   },
   {
     "id": 3,
@@ -77,5 +70,42 @@
     "website": "https://www.roedelius.com/",
     "image": "https://upload.wikimedia.org/wikipedia/commons/9/94/Hans_Joachim_Roedelius_2015.jpg",
     "shortDescription": "Hans-Joachim Roedelius is a German electronic musician and composer, best known as a co-founder of the influential 'kosmische' groups Cluster and Harmonia. He also performed in the ambient jazz trio Aquarello, and released several solo studio albums."
+  },
+  {
+    "id": 0,
+    "artistName": "Madlib",
+    "name": "Otis Jackson Jr.",
+    "birthdate": "1973-10-24",
+    "activeSince": 1993,
+    "genres": [
+      "Hip hop/Rap",
+      "Jazz"
+    ],
+    "labels": [
+      "Stones throw records",
+      "Blue note records"
+    ],
+    "website": "https://madlib.com/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/MadlibMarch2014Echo.jpg",
+    "shortDescription": "Madlib is an American DJ, music producer, multi-instrumentalist, and rapper. He is widely known for his collaborations with MF Doom (as Madvillain), J Dilla (as Jaylib), and Freddie Gibbs (as MadGibbs)."
+  },
+  {
+    "artistName": "Hiroshi Yoshimura",
+    "name": "Hiroshi Yoshimura",
+    "birthdate": "1940-10-22",
+    "activeSince": "1982",
+    "genres": [
+      "Ambient",
+      "New age"
+    ],
+    "labels": [
+      "17853 records",
+      "Eastworld",
+      "air RECORDS"
+    ],
+    "website": "https://en.wikipedia.org/wiki/Hiroshi_Yoshimura",
+    "image": "https://upload.wikimedia.org/wikipedia/en/c/ca/Hiroshi_Yoshimura%2CBlack_And_White.jpg",
+    "shortDescription": "Hiroshi Yoshimura was a Japanese composer and sound designer. A pioneer in ambient, environmental, and new age music, his beloved 1982 album Music for Nine Postcards is considered to be a classic within these genres.",
+    "id": 7
   }
 ]
