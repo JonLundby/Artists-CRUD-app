@@ -103,7 +103,6 @@ function sortBy() {
     artistsByGenreAndLabel.sort((artist1, artist2) => new Date(artist1.birthdate).getTime() - new Date(artist2.birthdate).getTime());
     showArtists(artistsByGenreAndLabel);
   } else if (!favCheck.checked && searchValue === "birthdate-descending" && valueLabel !== "none" && valueGenre !== "none") {
-    console.log("here...");
     artistsByGenreAndLabel.sort((artist1, artist2) => new Date(artist1.birthdate).getTime() - new Date(artist2.birthdate).getTime()).reverse();
     showArtists(artistsByGenreAndLabel);
   }
@@ -172,7 +171,6 @@ function sortBy() {
     favArtistsByGenreAndLabel.sort((artist1, artist2) => new Date(artist1.birthdate).getTime() - new Date(artist2.birthdate).getTime());
     showArtists(favArtistsByGenreAndLabel);
   } else if (favCheck.checked && searchValue === "birthdate-descending" && valueLabel !== "none" && valueGenre !== "none") {
-    console.log("here...");
     favArtistsByGenreAndLabel.sort((artist1, artist2) => new Date(artist1.birthdate).getTime() - new Date(artist2.birthdate).getTime()).reverse();
     showArtists(favArtistsByGenreAndLabel);
   }

@@ -106,5 +106,29 @@
     "image": "https://upload.wikimedia.org/wikipedia/commons/8/89/20170823_Plastik_zu_Ehren_Ant%C3%B4nio_Carlos_Jobims.jpg",
     "shortDescription": "Considered one of the great exponents of Brazilian music, Jobim internationalized bossa nova and, with the help of important American artists, merged it with jazz in the 1960s to create a new sound, with popular success. As a result, he is sometimes known as the \"father of bossa nova\".",
     "id": 1694029603726
+  },
+  {
+    "artistName": "MF Doom",
+    "name": "Daniel Dumile",
+    "birthdate": "1971-07-13",
+    "activeSince": "1999",
+    "genres": ["Hip hop/Rap"],
+    "labels": ["Stones throw records", "Blue note records"],
+    "website": "https://gasdrawls.com/",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/6/64/MF_Doom_-_Hultsfred_2011_%28cropped%29.jpg",
+    "shortDescription": "Dumile's rap persona MF DOOM was known for his unique free-association rap style, challenging the conventional style of rhyming and flow. His interest in cartoons, comics and other pop culture realms as well as his distinct sampling/production inspired many contemporary artists today.",
+    "id": 1694116844689
+  },
+  {
+    "artistName": "Big Mama Thornton",
+    "name": "Willie Mae Thornton",
+    "birthdate": "1926-12-11",
+    "activeSince": "1966",
+    "genres": ["Blues"],
+    "labels": ["Vanguard records", "Mercury records"],
+    "website": "https://en.wikipedia.org/wiki/Big_Mama_Thornton",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c1/Blues_is_a_woman_Reitz_%28Big_Mama_Thornton%29.jpg",
+    "shortDescription": "She was called “Big Mama” for both her size and her robust, powerful voice. She is best known for her gutsy 1952 rhythm and blues recording of “Hound Dog,” later covered by Elvis Presley, and for her original song “Ball and Chain,” made famous by Janis Joplin. Thornton's compositions include more than 20 blues songs.",
+    "id": 1694118652013
   }
 ]
