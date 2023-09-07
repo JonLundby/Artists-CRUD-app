@@ -88,14 +88,17 @@ function generateArtist(object) {
   // ---------- Eventlisteners on child elements---------- \\
   document.querySelector("#artists-container article:last-child").addEventListener("click", showDetails);
 
-  document.querySelector("#artists-container article:last-child .btn-update").addEventListener("click", (event) => {
-    event.stopPropagation();
-    updateArtistClicked();
-  });
-  document.querySelector("#artists-container article:last-child .btn-delete").addEventListener("click", (event) => {
-    event.stopPropagation();
-    deleteClicked();
-  });
+  if (!showingFavs) {
+    document.querySelector("#artists-container article:last-child .btn-update").addEventListener("click", (event) => {
+      event.stopPropagation();
+      updateArtistClicked();
+    });
+    
+    document.querySelector("#artists-container article:last-child .btn-delete").addEventListener("click", (event) => {
+      event.stopPropagation();
+      deleteClicked();
+    });
+  }
   document.querySelector("#artists-container article:last-child .btn-favorite").addEventListener("click", (event) => {
     event.stopPropagation();
     toggleFavoriteArtist(object, object.id);
