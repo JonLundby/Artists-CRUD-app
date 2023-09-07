@@ -56,8 +56,7 @@
               <option value="Bureau B">Bureau B</option>
             </select>
           </label>
-          <label for="fav-only">Favorites only<input type="checkbox" id="fav-only"></label>
-          
+          <label for="fav-only">Favorites only<input type="checkbox" id="fav-only" /></label>
         </div>
       </section>
       <section id="artists-container">
@@ -75,10 +74,14 @@
       <p>Date of birth<span id="detail-view-birthdate"></span></p>
       <p>Career Started: <span id="detail-view-activeSince"></span></p>
       <p id="detail-view-description"></p>
-      <ul id="detail-view-genres">Genres:</ul>
-      <ul id="detail-view-labels">Labels:</ul>
-      <a href="" id="detail-view-website">Website</a>      
-      <h3>Press "Esc" to close</h3>      
+      <ul id="detail-view-genres">
+        Genres:
+      </ul>
+      <ul id="detail-view-labels">
+        Labels:
+      </ul>
+      <a href="" id="detail-view-website">Website</a>
+      <h3>Press "Esc" to close</h3>
       <!-- todo - more info? -->
     </dialog>
 
@@ -158,8 +161,11 @@
 
     <!-- todo -> doublecheck if user wants to delete -->
     <dialog id="dialog-delete-artist">
-      <form action="" method="dialog" id="dialog-delete-artist">
+      <form action="" method="dialog" id="form-delete-artist">
         <!-- form delete confirmation -->
+        <h3>Confirm Delete?</h3>
+        <button type="submit" class="confirm-delete-btn">Confirm</button>
+        <button type="button" class="cancel-delete-btn">Cancel</button>
       </form>
     </dialog>
 

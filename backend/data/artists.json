@@ -1,41 +1,5 @@
 [
   {
-    "id": 0,
-    "artistName": "Madlib",
-    "name": "Otis Jackson Jr.",
-    "birthdate": "1973-10-24",
-    "activeSince": 1993,
-    "genres": [
-      "Hip hop/Rap",
-      "Jazz"
-    ],
-    "labels": [
-      "Stones throw records",
-      "Blue note records"
-    ],
-    "website": "https://madlib.com/",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/MadlibMarch2014Echo.jpg",
-    "shortDescription": "Madlib is an American DJ, music producer, multi-instrumentalist, and rapper. He is widely known for his collaborations with MF Doom (as Madvillain), J Dilla (as Jaylib), and Freddie Gibbs (as MadGibbs)."
-  },
-  {
-    "id": 1,
-    "artistName": "Cornelis Vreeswijk",
-    "name": "Cornelis Vreeswijk",
-    "birthdate": "1937-08-08",
-    "activeSince": "1964",
-    "genres": [
-      "Folk"
-    ],
-    "labels": [
-      "EMI",
-      "Universal records",
-      "Phillips records"
-    ],
-    "website": "https://en.wikipedia.org/wiki/Cornelis_Vreeswijk",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/Cornelis_Vreeswijk_%281973%29.jpg",
-    "shortDescription": "Cornelis Vreeswijk was a Dutch-Swedish songwriter, singer, poet and actor known for his influential role in modernizing the Swedish ballad and introducing it to a wider audience through merging tradition with more diverse musical styles."
-  },
-  {
     "id": 2,
     "artistName": "Astrud Gilberto",
     "name": "Astrud Gilberto",
@@ -182,5 +146,21 @@
     "image": "https://upload.wikimedia.org/wikipedia/commons/8/89/20170823_Plastik_zu_Ehren_Ant%C3%B4nio_Carlos_Jobims.jpg",
     "shortDescription": "Considered one of the great exponents of Brazilian music, Jobim internationalized bossa nova and, with the help of important American artists, merged it with jazz in the 1960s to create a new sound, with popular success. As a result, he is sometimes known as the \"father of bossa nova\".",
     "id": 1694029603726
+  },
+  {
+    "artistName": "bøllebob",
+    "name": "Anders Andersen",
+    "birthdate": "1974-10-29",
+    "activeSince": "1972",
+    "genres": [
+      "Folk"
+    ],
+    "labels": [
+      "Sony"
+    ],
+    "website": "vvvDOTtestDOTelbil",
+    "image": "https://icons.iconarchive.com/icons/paomedia/small-n-flat/256/sign-check-icon.png",
+    "shortDescription": "abc test",
+    "id": 1694074715718
   }
 ]

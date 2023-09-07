@@ -49,11 +49,11 @@ async function createArtist(event) {
 
     return arr;
   }
-
+  
   const website = form.website.value;
   const image = form.image.value;
   const shortDescription = form.shortDescription.value;
-
+  
   const newArtist = { artistName, name, birthdate, activeSince, genres, labels, website, image, shortDescription };
   const artistAsJson = JSON.stringify(newArtist);
   const response = await fetch(`${endpoint}/artists`, {
@@ -61,12 +61,14 @@ async function createArtist(event) {
     body: artistAsJson,
     headers: { "Content-Type": "application/json" },
   });
-
+  
   if (response.ok) {
     // if success, update the artists grid
     console.log("artist submitted");
     updateArtistGrid();
   }
+
+  document.querySelector("#dialog-create-artist").close();
 }
 
 // ----- UPDATE ARTIST ----- \\
@@ -122,16 +124,19 @@ async function updateArtist(event) {
     // if success, update the artist grid
     updateArtistGrid();
   }
+
+  document.querySelector("#dialog-update-artist").close();
 }
 
 // ----- DELETE ARTIST ----- \\
-async function deleteArtist(id) {
-  console.log("artist deleted");
-  // console.log(id);
+async function deleteArtist() {
+  const id = document.querySelector("#form-delete-artist").getAttribute("data-id");
+  console.log(id);
   const response = await fetch(`${endpoint}/artists/${id}`, {
     method: "DELETE",
   });
   if (response.ok) {
+    console.log("artist deleted");
     // if success, update the artists grid
     updateArtistGrid();
   }

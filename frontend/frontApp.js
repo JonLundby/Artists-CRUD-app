@@ -24,6 +24,10 @@ function startApp() {
   //update
   document.querySelector("#form-update-artist").addEventListener("submit", updateArtist);
 
+  //delete
+  document.querySelector("#form-delete-artist").addEventListener("submit", deleteArtist);
+  document.querySelector("#form-delete-artist .cancel-delete-btn").addEventListener("click", cancelDelete);
+
   //sort
   document.querySelector("#sort-by").addEventListener("change", sortBy);
   
@@ -72,7 +76,7 @@ function generateArtist(object) {
   });
   document.querySelector("#artists-container article:last-child .btn-delete").addEventListener("click", (event) => {
     event.stopPropagation();
-    deleteArtist(object.id);
+    deleteClicked();
   });
   document.querySelector("#artists-container article:last-child .btn-favorite").addEventListener("click", (event) => {
     event.stopPropagation();
@@ -142,11 +146,27 @@ function generateArtist(object) {
 
     //setting the current objects id to the form
     form.setAttribute("data-id", object.id);
-
+    
     //showing modal window/dialog
     document.querySelector("#dialog-update-artist").showModal();
   }
   
+  function deleteClicked(event) {
+    const form = document.querySelector("#form-delete-artist");
+    selectedArtist = object;
+    console.log(object.id)
+    
+    form.setAttribute("data-id", object.id);
+    console.log(form)
+    
+    document.querySelector("#dialog-delete-artist").showModal();
+  }
+
+  
+}
+
+function cancelDelete() {
+  document.querySelector("#dialog-delete-artist").close();
 }
 
 // ----- CREATE ARTIST ----- \\
