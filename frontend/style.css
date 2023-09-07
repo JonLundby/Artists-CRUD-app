@@ -41,7 +41,7 @@ button {
   background-color: var(--btn-bg-color);
   color: rgb(212, 231, 208);
   height: 35px;
-  width: 90px;
+  width: 35%;
   margin: 10px;
   font-size: 1.05rem;
   border-radius: 10px;

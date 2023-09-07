@@ -57,7 +57,7 @@ function showArtists(artists) {
 }
 
 function generateArtist(object) {
-  const htmlPost = /*html*/ `
+  const htmlArtist = /*html*/ `
                           <article id="artist-grid-post">
                               <h2>${object.artistName}<h2>
                               <h3>${object.name}</h3>
@@ -65,11 +65,25 @@ function generateArtist(object) {
                               <p>Born: ${object.birthdate}</p>
                               <button class="btn-update">Update</button>
                               <button class="btn-delete">Delete</button>
-                              <button class="btn-favorite">favorite</button>
+                              <button class="btn-favorite">Favorite</button>
+                          </article>
+      `;
+  
+  const htmlFavoriteArtist = /*html*/ `
+                          <article id="artist-grid-post">
+                              <h2>${object.artistName}<h2>
+                              <h3>${object.name}</h3>
+                              <img src=${object.image} id="grid-img">
+                              <p>Born: ${object.birthdate}</p>
+                              <button class="btn-favorite">Remove Favorite</button>
                           </article>
       `;
 
-  document.querySelector("#artists-container").insertAdjacentHTML("beforeend", htmlPost);
+  if (!showingFavs) {
+    document.querySelector("#artists-container").insertAdjacentHTML("beforeend", htmlArtist);
+  } else if (showingFavs) {
+    document.querySelector("#artists-container").insertAdjacentHTML("beforeend", htmlFavoriteArtist);
+  }
 
   // ---------- Eventlisteners on child elements---------- \\
   document.querySelector("#artists-container article:last-child").addEventListener("click", showDetails);

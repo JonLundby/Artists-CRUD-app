@@ -72,24 +72,6 @@
     "shortDescription": "Hans-Joachim Roedelius is a German electronic musician and composer, best known as a co-founder of the influential 'kosmische' groups Cluster and Harmonia. He also performed in the ambient jazz trio Aquarello, and released several solo studio albums."
   },
   {
-    "id": 0,
-    "artistName": "Madlib",
-    "name": "Otis Jackson Jr.",
-    "birthdate": "1973-10-24",
-    "activeSince": 1993,
-    "genres": [
-      "Hip hop/Rap",
-      "Jazz"
-    ],
-    "labels": [
-      "Stones throw records",
-      "Blue note records"
-    ],
-    "website": "https://madlib.com/",
-    "image": "https://upload.wikimedia.org/wikipedia/commons/c/cf/MadlibMarch2014Echo.jpg",
-    "shortDescription": "Madlib is an American DJ, music producer, multi-instrumentalist, and rapper. He is widely known for his collaborations with MF Doom (as Madvillain), J Dilla (as Jaylib), and Freddie Gibbs (as MadGibbs)."
-  },
-  {
     "artistName": "Hiroshi Yoshimura",
     "name": "Hiroshi Yoshimura",
     "birthdate": "1940-10-22",
